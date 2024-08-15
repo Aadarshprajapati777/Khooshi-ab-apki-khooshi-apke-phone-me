@@ -1,3 +1,27 @@
-import express from 'express';
+import express from "express";
+import cookieParser from "cookie-parser";
+import cors from "cors";
 
-export const app = express();
+const app = express();
+app.use(
+  cors({
+    origin: process.env.CLIENT_URL,
+    credentials: true,
+  })
+);
+
+app.use(express.json({ limit: "50kb" }));
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static("public"));
+app.use(cookieParser());
+
+
+//importing routes
+import { userRouter } from "./routes/user.route";
+
+
+
+//routes decalration, version 1
+app.use("/api/v1/user", userRouter);
+
+export default app;

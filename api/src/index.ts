@@ -1,7 +1,7 @@
 // Desc: Entry point of the application
 import { connectDB } from "./db/index";
 import "dotenv/config";
-import { app } from "./app";
+import app from "./app";
 
 connectDB()
   .then(() => {
