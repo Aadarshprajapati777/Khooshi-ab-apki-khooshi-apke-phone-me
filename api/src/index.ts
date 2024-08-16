@@ -4,7 +4,8 @@ import "dotenv/config";
 import app from "./app";
 
 (async () => {
-    await connectDB().then(() => {
+  await connectDB()
+    .then(() => {
       app.listen(Number(process.env.PORT), () => {
         console.log(`Server is running on port ${process.env.PORT}`);
       });
